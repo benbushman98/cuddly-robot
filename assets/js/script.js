@@ -1,10 +1,48 @@
-var queryURL = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=AIzaSyA8I6EN5t_ORE9DYQpOo6-LVpXfAeCp3SE&location=40.391617,-111.850769&radius=10000&type=restaurant';
+var latitude;
+var longitude;
+var type = "restaurants"
+var queryURL = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=AIzaSyA8I6EN5t_ORE9DYQpOo6-LVpXfAeCp3SE&location=' + latitude + ',' + longitude + '&radius=10000&type=' + type + '';
 
-fetch(queryURL).then(data=> {
-  return data.json()
+
+
+
+function success(position) {
+    var latitude = position.coords.latitude;
+    var longitude = position.coords.longitude;
+    console.log(latitude)
+    console.log(longitude)
+    runMapsApi(latitude, longitude);
+}
+// need to add prompt for user to input location and find an API or method to search the user's input
+function error() {
+      const status = document.querySelector('#status');
+    status.textContent = 'Unable to retrieve your location';
+  }
+
+  if(!navigator.geolocation) {
+    status.textContent = 'Geolocation is not supported by your browser';
+  } else {
+    status.textContent = 'Locating…';
+    navigator.geolocation.getCurrentPosition(success, error);
+  }
+
+
+function runMapsApi (latitude, longitude) {
+    
+    queryURL = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=AIzaSyA8I6EN5t_ORE9DYQpOo6-LVpXfAeCp3SE&location=' + latitude + ',' + longitude + '&radius=10000&type=' + type + '';
+
+
+fetch(queryURL).then(data => {
+    return data.json()
 }).then(jsonData => {
- console.log(jsonData.results)
-}).catch(error=> {
-  console.log(error);
-}) 
+    console.log(jsonData.results)
+}).catch(error => {
+    console.log(error);
+})
+};
+
+// spinner function for the number of restaurants
+$(function() {
+  $( "#spinner-1" ).spinner({min:1, max:10});
+});
 
