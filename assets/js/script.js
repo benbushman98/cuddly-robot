@@ -13,7 +13,7 @@ function success(position) {
     console.log(longitude)
     runMapsApi(latitude, longitude);
 }
-
+// need to add prompt for user to input location and find an API or method to search the user's input
 function error() {
       const status = document.querySelector('#status');
     status.textContent = 'Unable to retrieve your location';
@@ -25,8 +25,6 @@ function error() {
     status.textContent = 'Locating…';
     navigator.geolocation.getCurrentPosition(success, error);
   }
-        
-    
 
 
 function runMapsApi (latitude, longitude) {
@@ -41,5 +39,10 @@ fetch(queryURL).then(data => {
 }).catch(error => {
     console.log(error);
 })
+};
 
-}
+// spinner function for the number of restaurants
+$(function() {
+  $( "#spinner-1" ).spinner({min:1, max:10});
+});
+
