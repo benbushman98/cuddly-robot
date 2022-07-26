@@ -1,7 +1,6 @@
 var latitude;
 var longitude;
-var type = "restaurants"
-var queryURL = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=AIzaSyA8I6EN5t_ORE9DYQpOo6-LVpXfAeCp3SE&location=' + latitude + ',' + longitude + '&radius=10000&type=' + type + '';
+var queryURL = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=AIzaSyA8I6EN5t_ORE9DYQpOo6-LVpXfAeCp3SE&location=' + latitude + ',' + longitude + '&radius=10000&type=restaurants';
 
 
 
@@ -29,20 +28,44 @@ function error() {
 
 function runMapsApi (latitude, longitude) {
     
-    queryURL = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=AIzaSyA8I6EN5t_ORE9DYQpOo6-LVpXfAeCp3SE&location=' + latitude + ',' + longitude + '&radius=10000&type=' + type + '';
+    queryURLPlace = 'https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=AIzaSyA8I6EN5t_ORE9DYQpOo6-LVpXfAeCp3SE&location=' + latitude + ',' + longitude + '&radius=10000&type=restaurants';
 
 
-fetch(queryURL).then(data => {
-    return data.json()
-}).then(jsonData => {
-    console.log(jsonData.results)
-}).catch(error => {
-    console.log(error);
+// fetch(queryURLPlace).then(data => {
+//     return data.json()
+// }).then(jsonData => {
+//     console.log(jsonData.results)
+// }).catch(error => {
+//     console.log(error);
+// })
+fetch(queryURLPlace, {headers : {'mode': 'no-cors', 'Access-Control-Allow-Origin' : '*'}})
+.then(function (response) {
+    // console.log (response);
+    return response.json();
 })
-};
+.then(function (data) {
+    console.log(data.results)
+
+
+var photoRef = data.results[1].photos[0].photo_reference;
+console.log(photoRef)
+var photoURL = "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=" + photoRef + "&key=AIzaSyA8I6EN5t_ORE9DYQpOo6-LVpXfAeCp3SE";
+
+fetch(photoURL)
+.then(function (response) {
+    // console.log (response);
+    return response.json();
+})
+.then(function (data) {
+    console.log(data.results)
+});
+
+})
+}
 
 // spinner function for the number of restaurants
 $(function() {
   $( "#spinner-1" ).spinner({min:1, max:10});
 });
+
 
