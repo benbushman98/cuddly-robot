@@ -1,7 +1,7 @@
 var latitude;
 var longitude;
 var type = "restaurants"
-var queryURL = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=AIzaSyA8I6EN5t_ORE9DYQpOo6-LVpXfAeCp3SE&location=' + latitude + ',' + longitude + '&radius=10000&type=' + type + '';
+var queryURL = 'gihttps://maps.googleapis.com/maps/api/place/nearbysearch/json?key=AIzaSyA8I6EN5t_ORE9DYQpOo6-LVpXfAeCp3SE&location=' + latitude + ',' + longitude + '&radius=10000&type=' + type + '';
 
 
 
