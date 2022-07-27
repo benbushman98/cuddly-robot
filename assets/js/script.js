@@ -16,7 +16,7 @@ $('#getit').click(function showMyLocation() {
 function cityUrlFunc() {
     var city = $('#city').val();
     var state = $('#state').val();
-    var cityURL = 'http://api.openweathermap.org/geo/1.0/direct?q=' + city + ',' + state + ',usa&limit=1&appid=9c2f191921ea4a448012e7d41b8872c0';
+    var cityURL = 'https://api.openweathermap.org/geo/1.0/direct?q=' + city + ',' + state + ',usa&limit=1&appid=9c2f191921ea4a448012e7d41b8872c0';
 
     fetch(cityURL)
         .then(function (response) {
