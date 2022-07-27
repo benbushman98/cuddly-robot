@@ -24,6 +24,7 @@ function cityUrlFunc() {
             return response.json();
         })
         .then(function (data) {
+            console.log(data)
             var latitude = (data[0].lat);
             var longitude = (data[0].lon);
             runMapsApi(latitude, longitude);
