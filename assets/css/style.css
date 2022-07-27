@@ -26,3 +26,6 @@ button:hover {
 
 #spinner-1 {width: 100px}
 
+#state {
+    color: lightgrey;
+}
