@@ -1,6 +1,6 @@
 
 
-
+// Button click after values are added
 $('#getit').click(function showMyLocation() {
     var city = $('#city').val();
     var state = $('#state').val();
@@ -10,7 +10,9 @@ $('#getit').click(function showMyLocation() {
         cityUrlFunc();
     }
 })
+// End Button click after values are added
 
+// Function for getting lat and lon
 function cityUrlFunc() {
     var city = $('#city').val();
     var state = $('#state').val();
@@ -27,29 +29,7 @@ function cityUrlFunc() {
             runMapsApi(latitude, longitude);
         })
 }
-
-
-// Function for gettting location on page load
-// function success(position) {
-//     var latitude = position.coords.latitude;
-//     var longitude = position.coords.longitude;
-//     // console.log(latitude)
-//     // console.log(longitude)
-//     runMapsApi(latitude, longitude);
-// }
-// function error() {
-//     const status = document.querySelector('#status');
-//     status.textContent = 'Unable to retrieve your location';
-// }
-
-// if (!navigator.geolocation) {
-//     status.textContent = 'Geolocation is not supported by your browser';
-// } else {
-//     status.textContent = 'Locating…';
-//     navigator.geolocation.getCurrentPosition(success, error);
-// }
-// End Function for getting location on page load
-
+// End Function for getting lat and lon
 
 // Google Maps function for getting restaurants in the area
 function runMapsApi(latitude, longitude) {
@@ -101,14 +81,13 @@ function runMapsApi(latitude, longitude) {
             }
         })
 }
+// End Google Maps function for getting restaurants in the area
 
 
 
-
-
-// spinner function for the number of restaurants
+// Spinner function for the number of restaurants
 $(function () {
     $("#spinner-1").spinner({ min: 1, max: 10 });
 })
-
+// End Spinner function for the number of restaurants
 
