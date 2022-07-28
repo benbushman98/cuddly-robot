@@ -45,7 +45,7 @@ function runMapsApi(latitude, longitude) {
         .then(function (data) {
             // console.log(data.results);
             $('#cardcontainer').empty();
-            var number = ($('#spinner-1').val());
+            var number = ($('#number-of-stops').val());
             // console.log(number)
             for (var i = 0; i < number; i++) {
                 if (data.results[i].business_status !== 'OPERATIONAL') {
@@ -83,12 +83,4 @@ function runMapsApi(latitude, longitude) {
         })
 }
 // End Google Maps function for getting restaurants in the area
-
-
-
-// Spinner function for the number of restaurants
-$(function () {
-    $("#spinner-1").spinner({ min: 1, max: 10 });
-})
-// End Spinner function for the number of restaurants
 
