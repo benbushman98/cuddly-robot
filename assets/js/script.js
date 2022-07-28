@@ -1,7 +1,14 @@
 
 
+$('#cancel').click(function () {
+    location.reload()
+})
+
+
+
+
 // Button click after values are added
-$('#getit').click(function showMyLocation() {
+$('#getit').click(function() {
     var city = $('#city').val();
     var state = $('#state').val();
     if (city === "" || state === "") {
@@ -24,7 +31,7 @@ function cityUrlFunc() {
             return response.json();
         })
         .then(function (data) {
-            console.log(data)
+            // console.log(data)
             var latitude = (data[0].lat);
             var longitude = (data[0].lon);
             runMapsApi(latitude, longitude);
@@ -43,7 +50,7 @@ function runMapsApi(latitude, longitude) {
             return response.json();
         })
         .then(function (data) {
-            // console.log(data.results);
+            console.log(data.results);
             $('#cardcontainer').empty();
             var number = ($('#number-of-stops').val());
             // console.log(number)
@@ -64,19 +71,54 @@ function runMapsApi(latitude, longitude) {
                     var cardAddress = (data.results[i].vicinity + ", " + $('#state').val());
                     var cardStatus = (data.results[i]?.opening_hours?.open_now);
 
+                    if (cardPrice === undefined) {
+                        cardPrice = "Price Unknown"
+                    } else if(cardPrice === 1) {
+                        cardPrice = "$"
+                    } else if (cardPrice === 2) {
+                        cardPrice = "$$"
+                    } else if (cardPrice === 3) {
+                        cardPrice = "$$$"
+                    } else if (cardPrice === 4) {
+                        cardPrice = "$$$$"
+                    }
 
+                    if(cardRating <= 1.4) {
+                        cardRating = "⭐"
+                    } else if (cardRating <= 2.4) {
+                        cardRating = "⭐⭐"
+                    } else if (cardRating <= 3.9) {
+                        cardRating = "⭐⭐⭐"
+                    } else if (cardRating <= 4.7) {
+                        cardRating = "⭐⭐⭐⭐"
+                    } else if (cardRating >= 4.8) {
+                        cardRating = "⭐⭐⭐⭐⭐"
+                    }
+
+                    if(cardStatus === undefined) {
+                        cardStatus = "Hours Unknown"
+                    } else if (cardStatus === true) {
+                        cardStatus = "Open"
+                    } else if (cardStatus === false) {
+                        cardStatus = "Closed"
+                    }
 
                     var card = $('<card />');
 
+                    $('#mainpage').hide()
+                    $('#startover').show()
+                    $('#startover').click(function () {
+                        location.reload()
+                    })
                     card.attr("class", "card");
                     $('#cardcontainer').append(card);
 
-                    $(card).append('<div id="cardTitle">' + cardTitle + '</div>');
-                    $(card).append('<div id="cardPrice">' + cardPrice + '</div>');
-                    $(card).append('<div id="cardRating">' + cardRating + '</div>');
+                    $(card).append('<div id="cardTitle">' + cardTitle + " - " + cardPrice + '</div>');
+                    $(card).append('<div id="cardRating">' + "Rating: " + cardRating + '</div>');
                     $(card).append(photoEl);
                     $(card).append('<div id="cardAddress">' + cardAddress + '</div>');
-                    $(card).append('<div id="cardStatus">' + cardStatus + '</div>');
+                    $(card).append('<div id="cardStatus">' + "Staus: " + cardStatus + '</div>');
+                    
 
                 }
             }

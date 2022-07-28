@@ -1,24 +1,72 @@
-
 body {
-    background-image:url("../images/background.jpg");
-    background-size:cover;
-    height:100vh;
-    padding-top: 85px;;
+    background-image: url("../images/background.jpg");
+    background-size: cover;
+    height: 100vh;
+    padding-top: 85px;
+    ;
 }
 
 .title {
     font-family: 'VT323', monospace;
-    color:ivory;
+    color: ivory;
     font-size: 80px;
 }
-
+#city::placeholder{
+    color: black;
+}
 .button {
     border-radius: 35px;
-    background-color:dodgerblue;
-    color:white;
+    background-color: dodgerblue;
+    color: white;
 }
 
 button:hover {
-    background-color:white;
-    color:blue;
+    background-color: white;
+    color: blue;
+}
+
+.card {
+    display: block;
+    width: 350px;
+    font-family: 'VT323', monospace;
+    margin: 10px;
+    padding: 10px;
+    opacity: 10px;
+    background-color: #EBECE4;
+}
+
+#cardTitle {
+    text-align: center;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+#cardRating {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    height: 200px;
+    width: 200px;
+}
+#cardAddress {
+    font-weight: bold;
+    font-size: 20px;
+}
+#cardStatus {
+    font-weight: bold;
+    font-size: 20px;
+}
+#start-over-container {
+    text-align: center;
+}
+#startover {
+    display: none;
+    margin-top: 30px;
+    
 }
