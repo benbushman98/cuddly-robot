@@ -72,15 +72,15 @@ function runMapsApi(latitude, longitude) {
                     var cardStatus = (data.results[i]?.opening_hours?.open_now);
 
                     if (cardPrice === undefined) {
-                        cardPrice = "Price Unknown"
+                        cardPrice = ""
                     } else if(cardPrice === 1) {
-                        cardPrice = "$"
+                        cardPrice = " - $"
                     } else if (cardPrice === 2) {
-                        cardPrice = "$$"
+                        cardPrice = " - $$"
                     } else if (cardPrice === 3) {
-                        cardPrice = "$$$"
+                        cardPrice = " - $$$"
                     } else if (cardPrice === 4) {
-                        cardPrice = "$$$$"
+                        cardPrice = " - $$$$"
                     }
 
                     if(cardRating <= 1.4) {
@@ -113,11 +113,11 @@ function runMapsApi(latitude, longitude) {
                     card.attr("class", "card");
                     $('#cardcontainer').append(card);
 
-                    $(card).append('<div id="cardTitle">' + cardTitle + " - " + cardPrice + '</div>');
+                    $(card).append('<div id="cardTitle">' + cardTitle + cardPrice + '</div>');
                     $(card).append('<div id="cardRating">' + "Rating: " + cardRating + '</div>');
                     $(card).append(photoEl);
                     $(card).append('<div id="cardAddress">' + cardAddress + '</div>');
-                    $(card).append('<div id="cardStatus">' + "Staus: " + cardStatus + '</div>');
+                    $(card).append('<div id="cardStatus">' + "Status: " + cardStatus + '</div>');
                     
 
                 }
