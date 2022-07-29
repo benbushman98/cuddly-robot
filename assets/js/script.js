@@ -12,7 +12,7 @@ $('#getit').click(function() {
     var city = $('#city').val();
     var state = $('#state').val();
     if (city === "" || state === "") {
-        alert("Needs City and State");
+        $('#alert').text("Please enter a City or State")
     } else {
         cityUrlFunc();
     }
