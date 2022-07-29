@@ -55,22 +55,22 @@ function runMapsApi(latitude, longitude) {
             var number = ($('#number-of-stops').val());
             // console.log(number)
             for (var i = 0; i < number; i++) {
-                if (data.results[i].business_status !== 'OPERATIONAL') {
+                var randomNumber = Math.floor(Math.random() * 20);
+                if (data.results[randomNumber].business_status !== 'OPERATIONAL') {
                     number++
                 } else {
-                    var cardTitle = (data.results[i].name);
-                    var cardPrice = (data.results[i].price_level);
-                    var photoRef = (data.results[i].photos[0].photo_reference);
+                    var cardTitle = (data.results[randomNumber].name);
+                    var cardPrice = (data.results[randomNumber].price_level);
+                    var photoRef = (data.results[randomNumber].photos[0].photo_reference);
                     var photoEl = $('<img />',
                         {
                             id: "img",
                             src: "https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&photoreference=" + photoRef + "&key=AIzaSyA8I6EN5t_ORE9DYQpOo6-LVpXfAeCp3SE",
                             maxheight: 300
                         });
-                    var cardRating = (data.results[i].rating);
-                    var cardAddress = (data.results[i].vicinity + ", " + $('#state').val());
-                    var cardStatus = (data.results[i]?.opening_hours?.open_now);
-
+                    var cardRating = (data.results[randomNumber].rating);
+                    var cardAddress = (data.results[randomNumber].vicinity + ", " + $('#state').val());
+                    var cardStatus = (data.results[randomNumber]?.opening_hours?.open_now);
                     if (cardPrice === undefined) {
                         cardPrice = "Price Unknown"
                     } else if(cardPrice === 1) {
