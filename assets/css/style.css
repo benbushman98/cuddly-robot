@@ -1,9 +1,9 @@
-body {
+html {
     background-image: url("../images/background.jpg");
     background-size: cover;
+    /* background-repeat: no-repeat; */
     height: 100vh;
     padding-top: 85px;
-    ;
 }
 
 .title {
@@ -11,6 +11,13 @@ body {
     color: ivory;
     font-size: 80px;
 }
+#explanation {
+    font-family: 'VT323', monospace;
+    color: ivory;
+    font-size: 20px;
+}
+
+
 #city::placeholder{
     color: black;
 }
@@ -68,5 +75,5 @@ button:hover {
 #startover {
     display: none;
     margin-top: 30px;
-    
+    margin-bottom: 30px;
 }
