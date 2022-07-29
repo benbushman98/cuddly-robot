@@ -22,7 +22,7 @@ Here is a screenshot of the final application:
 ![name of the screenshot file](URL GitHub created)
 
 Here is the link of the deployed application:
-
+https://benbushman98.github.io/cuddly-robot/
 
 
 
