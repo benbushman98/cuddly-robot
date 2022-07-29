@@ -54,23 +54,32 @@ function runMapsApi(latitude, longitude) {
             $('#cardcontainer').empty();
             var number = ($('#number-of-stops').val());
             // console.log(number)
-            for (var i = 0; i < number; i++) {
-                var randomNumber = Math.floor(Math.random() * 20);
-                if (data.results[randomNumber].business_status !== 'OPERATIONAL') {
+
+            var randomNumber = [];
+            for (var a = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19], i = a.length; i--; ) {
+                var random = a.splice(Math.floor(Math.random() * (i + 1)), 1)[0];
+                console.log(random);
+                randomNumber[i] = random
+            }
+
+                for (var j = 0; j < number; j++){
+               
+                if (data.results[randomNumber[j]].business_status !== 'OPERATIONAL') {
                     number++
+
                 } else {
-                    var cardTitle = (data.results[randomNumber].name);
-                    var cardPrice = (data.results[randomNumber].price_level);
-                    var photoRef = (data.results[randomNumber].photos[0].photo_reference);
+                    var cardTitle = (data.results[randomNumber[j]].name);
+                    var cardPrice = (data.results[randomNumber[j]].price_level);
+                    var photoRef = (data.results[randomNumber[j]].photos[0].photo_reference);
                     var photoEl = $('<img />',
                         {
                             id: "img",
                             src: "https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&photoreference=" + photoRef + "&key=AIzaSyA8I6EN5t_ORE9DYQpOo6-LVpXfAeCp3SE",
                             maxheight: 300
                         });
-                    var cardRating = (data.results[randomNumber].rating);
-                    var cardAddress = (data.results[randomNumber].vicinity + ", " + $('#state').val());
-                    var cardStatus = (data.results[randomNumber]?.opening_hours?.open_now);
+                    var cardRating = (data.results[randomNumber[j]].rating);
+                    var cardAddress = (data.results[randomNumber[j]].vicinity + ", " + $('#state').val());
+                    var cardStatus = (data.results[randomNumber[j]]?.opening_hours?.open_now);
                     if (cardPrice === undefined) {
                         cardPrice = ""
                     } else if(cardPrice === 1) {
@@ -119,10 +128,10 @@ function runMapsApi(latitude, longitude) {
                     $(card).append('<div id="cardAddress">' + cardAddress + '</div>');
                     $(card).append('<div id="cardStatus">' + "Status: " + cardStatus + '</div>');
                     
-
                 }
-            }
-        })
-}
+                }
+            })
+        }
+
 // End Google Maps function for getting restaurants in the area
 
