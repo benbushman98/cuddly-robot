@@ -21,17 +21,17 @@
   </div>
   <div id="mainpage">
     <p id="explanation" class="p-1 has-text-centered">Check out the Cuddly-Robot Food Crawl. Enter your city and state to get the restaurants near you.</p>
-      <p id="explanation" class="p-1 has-text-centered">Feel free to enter the number of locations you want and have an enjoyable night on the town.
+      <p id="explanation" class="p-1 mb-5 has-text-centered">Feel free to enter the number of locations you want and have an enjoyable night on the town.
     </p>
 
     <div class="field is-grouped is-grouped-centered">
-      <div class="control columns field m-2">
-        <div class="column">
-          <input id="city" class="input is-rounded" type="text" placeholder="City">
+      <div class="control columns field">
+        <div class="column ">
+          <input id="city" class="input is-rounded has-text-centered-mobile" type="text" placeholder="City">
         </div>
-        <div class="column">
-          <div class="select is-rounded">
-            <select class="" id="state">
+        <div class="column ">
+          <div class="select is-rounded ">
+            <select class="has-text-centered-mobile" id="state">
               <option value="" disabled selected>State</option>
               <option value="AL">Alabama</option>
               <option value="AK">Alaska</option>
@@ -86,9 +86,9 @@
             </select>
           </div>
         </div>
-        <div class="column">
-          <div class="select is-rounded">
-            <select class="" id="number-of-stops">
+        <div class="column  is-full-width">
+          <div class="select is-rounded ">
+            <select class="has-text-centered-mobile" id="number-of-stops">
               <option value="" disabled selected>Number of Stops</option>
               <option value=1>1</option>
               <option value=2>2</option>
@@ -98,7 +98,7 @@
               <option value=6>6</option>
               <option value=7>7</option>
               <option value=8>8</option>
-              <option value=9>7</option>
+              <option value=9>9</option>
               <option value=10>10</option>
             </select>
           </div>
@@ -106,7 +106,7 @@
       </div>
     </div>
 
-    <div class="field is-grouped is-grouped-centered">
+    <div class="field is-grouped is-grouped-centered mt-5">
       <div class="control">
         <button id="getit" class="button is-link">Submit</button>
       </div>
