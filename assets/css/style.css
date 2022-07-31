@@ -26,6 +26,7 @@ html {
     background-color: dodgerblue;
     border: none;
     color: white;
+    width: 150px;
 }
 
 button:hover {
