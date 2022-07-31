@@ -20,8 +20,10 @@
     </div>
   </div>
   <div id="mainpage">
-    <p id="explanation" class="p-1 has-text-centered">Check out the Cuddly-Robot Food Crawl. Enter your city and state to get the restaurants near you.</p>
-      <p id="explanation" class="p-1 mb-5 has-text-centered">Feel free to enter the number of locations you want and have an enjoyable night on the town.
+    <p id="explanation" class="p-1 has-text-centered">Check out the Cuddly-Robot Food Crawl. Enter your city and state
+      to get the restaurants near you.</p>
+    <p id="explanation" class="p-1 mb-5 has-text-centered">Feel free to enter the number of locations you want and have
+      an enjoyable night on the town.
     </p>
     <p id="alert" class="has-text-centered danger mt-5 mb-5 has-text-danger"></p>
 
@@ -112,16 +114,26 @@
         <button id="getit" class="button is-link">Submit</button>
       </div>
       <div class="control">
+        <button id="savesearch" class="button is-link is-light">Save Search</button>
+      </div>
+      <div class="control">
         <button id="cancel" class="button is-link is-light">Cancel</button>
       </div>
     </div>
   </div>
+
+  <div class="control">
+    <h1 id="favloca">Favorite Locations</h1>
+    <div id="savedcitybutton" class="is-flex is-flex-direction-row is-flex-wrap-wrap is-justify-content-center"></div>
+  </div>
+
+
   <section id="cardcontainer" class="is-flex is-flex-direction-row is-flex-wrap-wrap is-justify-content-center">
   </section>
+
   <div id="start-over-container" class="control">
     <button id="startover" class="button is-link is-light">Start Over</button>
   </div>
-
   <!-- jquery links -->
   <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>

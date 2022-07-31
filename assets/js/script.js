@@ -4,25 +4,68 @@ $('#cancel').click(function () {
     location.reload()
 })
 
+// Pull from Local Storage and Render to Screen
+var lsSaveSearch = JSON.parse(window.localStorage.getItem("SavedCity")) || [];
+if (localStorage !== null) {
+    // console.log("displayCity");
+    favoriteSearch(lsSaveSearch);
+}
+// End Pull from Local Storage and Render to Screen
 
 
+// Function for Saved City
+$('#savesearch').click(function () {
+    var lsSaveSearch = JSON.parse(window.localStorage.getItem("SavedCity")) || [];
+    var city = $("#city");
+    var state = $("#state");
+    var stops = $("#number-of-stops");
+    var favorites = {
+        City: city.val(),
+        State: state.val(),
+        Stops: stops.val()
+    }
+    lsSaveSearch.push(favorites)
+    window.localStorage.setItem("SavedCity", JSON.stringify(lsSaveSearch))
+    favoriteSearch(lsSaveSearch)
+})
+
+function favoriteSearch(lsSaveSearch) {
+    var savesearch = $('#savedcitybutton');
+    savesearch.empty()
+    for (var i = 0; i < lsSaveSearch.length; i++) {
+        if(lsSaveSearch[i] === "") {
+        } else{
+            savesearch.append('<button class="button favoritelocations" data-city = "' + lsSaveSearch[i].City + '" data-state = "' + lsSaveSearch[i].State + '" data-stops = "' + lsSaveSearch[i].Stops + '">' + lsSaveSearch[i].City + ", " + lsSaveSearch[i].State + " | " + lsSaveSearch[i].Stops + '</button>')
+        }
+    }
+}
+// End Function for Saved City
+
+// Favorite Locations API Calls
+$('.favoritelocations').click(function() {
+    var city = ($(this).attr("data-city"));
+    var state = ($(this).attr("data-state"));
+    var number = ($(this).attr("data-stops"))
+
+    cityUrlFunc(city, state, number);
+})
+// End Favorite Locations API Calls
 
 // Button click after values are added
 $('#getit').click(function() {
     var city = $('#city').val();
     var state = $('#state').val();
+    var number = ($('#number-of-stops').val());
     if (city === "" || state === "") {
         $('#alert').text("Please enter a City or State")
     } else {
-        cityUrlFunc();
+        cityUrlFunc(city,state,number);
     }
 })
 // End Button click after values are added
 
 // Function for getting lat and lon
-function cityUrlFunc() {
-    var city = $('#city').val();
-    var state = $('#state').val();
+function cityUrlFunc(city,state,number) {
     var cityURL = 'https://api.openweathermap.org/geo/1.0/direct?q=' + city + ',' + state + ',usa&limit=1&appid=9c2f191921ea4a448012e7d41b8872c0';
 
     fetch(cityURL)
@@ -34,13 +77,13 @@ function cityUrlFunc() {
             // console.log(data)
             var latitude = (data[0].lat);
             var longitude = (data[0].lon);
-            runMapsApi(latitude, longitude);
+            runMapsApi(latitude, longitude, number);
         })
 }
 // End Function for getting lat and lon
 
 // Google Maps function for getting restaurants in the area
-function runMapsApi(latitude, longitude) {
+function runMapsApi(latitude, longitude, number) {
 
     var queryURLPlace = 'https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=AIzaSyA8I6EN5t_ORE9DYQpOo6-LVpXfAeCp3SE&location=' + latitude + ',' + longitude + '&radius=10000&type=restaurant';
 
@@ -52,7 +95,6 @@ function runMapsApi(latitude, longitude) {
         .then(function (data) {
             console.log(data.results);
             $('#cardcontainer').empty();
-            var number = ($('#number-of-stops').val());
             // console.log(number)
 
             var randomNumber = [];
