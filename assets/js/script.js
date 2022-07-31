@@ -77,13 +77,13 @@ function cityUrlFunc(city,state,number) {
             // console.log(data)
             var latitude = (data[0].lat);
             var longitude = (data[0].lon);
-            runMapsApi(latitude, longitude, number);
+            runMapsApi(latitude, longitude, state, number);
         })
 }
 // End Function for getting lat and lon
 
 // Google Maps function for getting restaurants in the area
-function runMapsApi(latitude, longitude, number) {
+function runMapsApi(latitude, longitude, state, number) {
 
     var queryURLPlace = 'https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=AIzaSyA8I6EN5t_ORE9DYQpOo6-LVpXfAeCp3SE&location=' + latitude + ',' + longitude + '&radius=10000&type=restaurant';
 
@@ -120,7 +120,7 @@ function runMapsApi(latitude, longitude, number) {
                             maxheight: 300
                         });
                     var cardRating = (data.results[randomNumber[j]].rating);
-                    var cardAddress = (data.results[randomNumber[j]].vicinity + ", " + $('#state').val());
+                    var cardAddress = (data.results[randomNumber[j]].vicinity + ", " + state);
                     var cardStatus = (data.results[randomNumber[j]]?.opening_hours?.open_now);
                     if (cardPrice === undefined) {
                         cardPrice = ""
