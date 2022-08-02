@@ -4,7 +4,7 @@ $('#cancel').click(function () {
     location.reload()
 })
 
-$('#clearlocalstorage').click(function() {
+$('#clearlocalstorage').click(function () {
     localStorage.clear();
     location.reload();
 })
@@ -105,7 +105,7 @@ function cityUrlFunc(city, state, number) {
 function runMapsApi(latitude, longitude, state, number) {
 
     var queryURLPlace = 'https://bootcamp-cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=AIzaSyA8I6EN5t_ORE9DYQpOo6-LVpXfAeCp3SE&location=' + latitude + ',' + longitude + '&radius=10000&type=restaurant';
-
+    var array = []
     fetch(queryURLPlace)
         .then(function (response) {
             // console.log (response);
@@ -117,9 +117,17 @@ function runMapsApi(latitude, longitude, state, number) {
             // console.log(number)
 
             var randomNumber = [];
-            for (var a = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19], i = a.length; i--;) {
+            //  console.log(data.results)
+            for (var p = 0; p < data.results.length; p++) {
+                var arrayNumber = (data.results.indexOf(data.results[p]));
+                array.push(arrayNumber)
+                // console.log(array)
+            }
+
+
+            for (var a = array, i = a.length; i--;) {
                 var random = a.splice(Math.floor(Math.random() * (i + 1)), 1)[0];
-                // console.log(random);
+                // console.log(a);
                 randomNumber[i] = random
             }
 
@@ -129,17 +137,17 @@ function runMapsApi(latitude, longitude, state, number) {
                     number++
 
                 } else {
-                    var cardTitle = (data.results[randomNumber[j]].name);
-                    var cardPrice = (data.results[randomNumber[j]].price_level);
-                    var photoRef = (data.results[randomNumber[j]].photos[0].photo_reference);
+                    var cardTitle = (data.results[randomNumber[j]]?.name);
+                    var cardPrice = (data.results[randomNumber[j]]?.price_level);
+                    var photoRef = (data.results[randomNumber[j]]?.photos[0]?.photo_reference);
                     var photoEl = $('<img />',
                         {
                             id: "img",
                             src: "https://maps.googleapis.com/maps/api/place/photo?maxwidth=300&photoreference=" + photoRef + "&key=AIzaSyA8I6EN5t_ORE9DYQpOo6-LVpXfAeCp3SE",
                             maxheight: 300
                         });
-                    var cardRating = (data.results[randomNumber[j]].rating);
-                    var cardAddress = (data.results[randomNumber[j]].vicinity + ", " + state);
+                    var cardRating = (data.results[randomNumber[j]]?.rating);
+                    var cardAddress = (data.results[randomNumber[j]]?.vicinity + ", " + state);
                     var cardStatus = (data.results[randomNumber[j]]?.opening_hours?.open_now);
                     if (cardPrice === undefined) {
                         cardPrice = ""
@@ -192,6 +200,12 @@ function runMapsApi(latitude, longitude, state, number) {
 
                 }
             }
+        })
+        .catch(error => {
+            console.log(error)
+            $('#alert').text("Search did not return any data.");
+            $('#alert').append(" Please confirm spelling and try again.")
+            return;
         })
 }
 
