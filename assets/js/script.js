@@ -11,15 +11,19 @@ $('#clearlocalstorage').click(function() {
 
 // Pull from Local Storage and Render to Screen
 var lsSaveSearch = JSON.parse(window.localStorage.getItem("SavedCity")) || [];
-if (localStorage !== null) {
+if (localStorage.length > 0) {
     // console.log("displayCity");
     favoriteSearch(lsSaveSearch);
+} else {
+    // console.log("test")
+    $('#favloca').hide();
 }
 // End Pull from Local Storage and Render to Screen
 
 
 // Function for Saved City
 $('#savesearch').click(function () {
+    $('#favloca').show();
     var lsSaveSearch = JSON.parse(window.localStorage.getItem("SavedCity")) || [];
     var city = $("#city");
     var state = $("#state");
@@ -57,7 +61,7 @@ function favoriteSearch(lsSaveSearch) {
 
 // Favorite Locations API Calls
 $('.favoritelocations').click(function () {
-    console.log("testing")
+    // console.log("testing")
     var city = ($(this).attr("data-city"));
     var state = ($(this).attr("data-state"));
     var number = ($(this).attr("data-number"))
@@ -115,7 +119,7 @@ function runMapsApi(latitude, longitude, state, number) {
             var randomNumber = [];
             for (var a = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19], i = a.length; i--;) {
                 var random = a.splice(Math.floor(Math.random() * (i + 1)), 1)[0];
-                console.log(random);
+                // console.log(random);
                 randomNumber[i] = random
             }
 
