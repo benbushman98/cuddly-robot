@@ -19,7 +19,7 @@ In order to develop this application, the technology of HTML, CSS and JavaScript
 -The platform is interactive and user-friendly. With the JavaScript technology, the application allows the user to get accurate feedback based on its choices. This application is based on three Server-Side APIs: Google Maps, Open Weather Map, and Heroku app. A Third-Party API, Google Fonts, was also used to customize the brand's name "Cuddly-Robot Food Crawl".
 
 Here is a screenshot of the final application:
-![screenshot1](https://github.com/benbushman98/cuddly-robot/blob/main/assets/images/screenshot1.png)
+![screenshot1]()
 ![screenshot2](https://github.com/benbushman98/cuddly-robot/blob/main/assets/images/screenshot2.png)
 
 Here is the link of the deployed application:
