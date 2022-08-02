@@ -100,7 +100,7 @@ function cityUrlFunc(city, state, number) {
 // Google Maps function for getting restaurants in the area
 function runMapsApi(latitude, longitude, state, number) {
 
-    var queryURLPlace = 'https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=AIzaSyA8I6EN5t_ORE9DYQpOo6-LVpXfAeCp3SE&location=' + latitude + ',' + longitude + '&radius=10000&type=restaurant';
+    var queryURLPlace = 'https://bootcamp-cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=AIzaSyA8I6EN5t_ORE9DYQpOo6-LVpXfAeCp3SE&location=' + latitude + ',' + longitude + '&radius=10000&type=restaurant';
 
     fetch(queryURLPlace)
         .then(function (response) {
