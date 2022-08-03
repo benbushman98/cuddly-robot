@@ -13,13 +13,14 @@
   <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
+<!-- Homepage Design -->
 <body>
-
   <div class="field is-grouped is-grouped-centered">
     <div class="control">
       <h1 class="title is-size-1-tablet is-size-3-mobile">Cuddly-Robot Food Crawl</h1>
     </div>
   </div>
+  <!-- Description of Website -->
   <div id="mainpage">
     <p id="explanation" class="p-1 has-text-centered">Check out the Cuddly-Robot Food Crawl. Enter your city and state
       to get the restaurants near you.</p>
@@ -28,11 +29,14 @@
     </p>
     <p id="alert" class="has-text-centered danger mt-5 mb-5 has-text-danger"></p>
 
+    
     <div class="field is-grouped is-grouped-centered">
       <div class="control columns field">
         <div class="column ">
+          <!-- city dropdown -->
           <input id="city" class="input is-rounded has-text-centered-mobile" type="text" placeholder="City">
         </div>
+        <!-- State dropdown -->
         <div class="column ">
           <div class="select is-rounded ">
             <select class="has-text-centered-mobile" id="state">
@@ -92,6 +96,7 @@
         </div>
         <div class="column  is-full-width">
           <div class="select is-rounded ">
+            <!-- Number of stops dropdown -->
             <select class="has-text-centered-mobile" id="number-of-stops">
               <option value="" disabled selected>Number of Stops</option>
               <option value=1>1</option>
@@ -109,7 +114,7 @@
         </div>
       </div>
     </div>
-
+<!-- Buttons -->
     <div class="field is-grouped is-grouped-centered mt-5 is-flex is-flex-wrap-wrap">
       <div class="control mb-5">
         <button id="submit" class="button is-link">Submit</button>
@@ -125,7 +130,7 @@
       </div>
     </div>
   </div>
-
+<!-- Favorite Locations Code -->
   <div id="favlocationslist" class="control">
     <h1 id="favloca">Favorite Locations</h1>
     <div id="savedcitybutton" class="is-flex is-flex-direction-row is-flex-wrap-wrap is-justify-content-center"></div>
@@ -134,7 +139,7 @@
 
   <section id="cardcontainer" class="is-flex is-flex-direction-row is-flex-wrap-wrap is-justify-content-center">
   </section>
-
+<!-- StartOver Button -->
   <div id="start-over-container" class="control">
     <button id="startover" class="button is-link is-light">Start Over</button>
   </div>

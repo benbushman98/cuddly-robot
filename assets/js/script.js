@@ -149,6 +149,7 @@ function runMapsApi(latitude, longitude, state, number) {
                     var cardRating = (data.results[randomNumber[j]]?.rating);
                     var cardAddress = (data.results[randomNumber[j]]?.vicinity + ", " + state);
                     var cardStatus = (data.results[randomNumber[j]]?.opening_hours?.open_now);
+                    // Price by $$
                     if (cardPrice === undefined) {
                         cardPrice = ""
                     } else if (cardPrice === 1) {
@@ -160,7 +161,7 @@ function runMapsApi(latitude, longitude, state, number) {
                     } else if (cardPrice === 4) {
                         cardPrice = " - $$$$"
                     }
-
+                    // Rating by stars
                     if (cardRating <= 1.4) {
                         cardRating = "⭐"
                     } else if (cardRating <= 2.4) {
@@ -180,7 +181,7 @@ function runMapsApi(latitude, longitude, state, number) {
                     } else if (cardStatus === false) {
                         cardStatus = "Closed"
                     }
-
+                    // Create Cards
                     var card = $('<card />');
 
                     $('#mainpage').hide();
@@ -201,6 +202,7 @@ function runMapsApi(latitude, longitude, state, number) {
                 }
             }
         })
+        // Catch errors
         .catch(error => {
             console.log(error)
             $('#alert').text("Search did not return any data.");
