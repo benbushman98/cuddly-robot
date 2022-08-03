@@ -1,11 +1,10 @@
 html {
     background-image: url("../images/background.jpg");
     background-size: cover;
-    /* background-repeat: no-repeat; */
     height: 100vh;
     padding-top: 85px;
 }
-
+/* homepage */
 .title {
     font-family: 'VT323', monospace;
     color: ivory;
@@ -16,7 +15,7 @@ html {
     color: ivory;
     font-size: 20px;
 }
-
+/* End homepage */
 
 #city::placeholder{
     color: black;
@@ -34,6 +33,7 @@ button:hover {
     color: blue;
 }
 
+/* Card styling */
 .card {
     display: block;
     width: 350px;
@@ -71,6 +71,9 @@ button:hover {
     font-weight: bold;
     font-size: 20px;
 }
+/* End Card Styling */
+
+/* Start over button */
 #start-over-container {
     text-align: center;
 }
@@ -79,11 +82,13 @@ button:hover {
     margin-top: 30px;
     margin-bottom: 30px;
 }
+/* End Start over button */
 
 .select,
 select{
     width:100%;
 }
+/* Favorite locations styling */
 .favoritelocations{
     margin-top: 10px;
     margin-bottom: 10px;
@@ -99,3 +104,4 @@ select{
     margin-top: 30px;
     color: ivory;
 }
+/* End Favorite locations styling */
